@@ -6,6 +6,7 @@ common attributes/methods for other classes.
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """
     This is a BaseModel class that defines all common
