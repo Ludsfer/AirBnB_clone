@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Test suite for the User class in models.user"""
 import unittest
-from models.base_model import BaseModel
 
+from models.base_model import BaseModel
 from models.user import User
 
 
@@ -11,7 +11,8 @@ class TestUser(unittest.TestCase):
 
     def test_attrs_are_class_attrs(self):
         """Check if attributes are class attributes."""
-        u = User() # noqa
+        u = User()
+
         # test that it is a class attribute
         self.assertTrue(hasattr(User, "first_name")
                         and hasattr(User, "last_name"))
