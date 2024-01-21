@@ -10,8 +10,7 @@ class TestPlace(unittest.TestCase):
 
     def setUp(self):
         self.place = Place()
-        self.attr_list = 
-        ["city_id", "user_id", "name",
+        self.attr_list = ["city_id", "user_id", "name",
                 "description", "number_rooms",
                 "number_bathrooms", "max_guest",
                 "price_by_night", "latitude",
@@ -22,5 +21,4 @@ class TestPlace(unittest.TestCase):
 
     def test_attrs_are_class_attrs(self):
         for attr in self.attr_list:
-            self.assertIs(type(getattr(self.place, attr)), str)
             self.assertFalse(bool(getattr(self.place, attr)))

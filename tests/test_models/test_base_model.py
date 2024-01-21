@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """Unit Test Suite for BaseModel class."""
+import time
 import unittest
 from time import sleep
-import os # noqa
+import os
 from datetime import datetime
 from uuid import uuid4
 
@@ -88,10 +89,11 @@ class TestBaseModel(unittest.TestCase):
         Checks that save() method updates the updated_at attribute
         """
         b = BaseModel()
+        time.sleep(0.5)
+        date_now = datetime.now()
         b.save()
-        self.assertNotEqual(b.created_at, b.updated_at)
-        self.assertGreater(b.updated_at.microsecond,
-                           b.created_at.microsecond)
+        diff = b.updated_at - date_now
+        self.assertTrue(abs(diff.total_seconds()) < 0.01)
 
     def test_if_to_dict_returns_dict(self):
         """
