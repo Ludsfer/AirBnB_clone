@@ -10,7 +10,12 @@ class TestPlace(unittest.TestCase):
 
     def setUp(self):
         self.place = Place()
-        pass
+        self.attr_list = 
+        ["city_id", "user_id", "name",
+                "description", "number_rooms",
+                "number_bathrooms", "max_guest",
+                "price_by_night", "latitude",
+                "longitude", "amenity_ids"]
 
     def test_place_is_a_subclass_of_basemodel(self):
         self.assertTrue(issubclass(type(self.place), BaseModel))
