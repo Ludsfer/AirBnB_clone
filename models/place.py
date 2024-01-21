@@ -15,7 +15,7 @@ class Place(BaseModel):
     price_by_night = ""
     latitude = ""
     longitude = ""
-    amenity_ids = []
+    amenities = []
 
     def __init__(self, *args, **kwargs):
         """Constructs a new Place instance."""
