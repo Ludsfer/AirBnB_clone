@@ -4,9 +4,7 @@ This file contains a class BaseModel that defines all
 common attributes/methods for other classes.
 """
 import uuid
-import datetime as dt
-from models import storage
-
+from datetime import datetime
 
 class BaseModel:
     """
@@ -17,17 +15,18 @@ class BaseModel:
         """
         Construct a new BaseModel instance.
         """
+        from models import storage
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key in ('created_at', 'updated_at'):
-                        value1 = dt.datetime.fromisoformat(value)
+                        value1 = datetime.fromisoformat(value)
                         setattr(self, key, value1)
                     else:
                         setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = dt.datetime.now()
+            self.created_at = datetime.now()
             self.updated_at = self.created_at
             storage.new(self)
 
@@ -43,7 +42,8 @@ class BaseModel:
         This updates the public instance attribute updated_at
         with the current datetime
         """
-        self.updated_at = dt.datetime.now()
+        from models import storage
+        self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self) -> dict:
